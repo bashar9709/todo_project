@@ -1,0 +1,39 @@
+{% extends "base.html" %} 
+{% block title %} detailspage {% endblock title %}
+
+
+
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+ 
+<div class="card" style="width: 70%; margin: auto;" >
+    <div class="card-body">
+      <h5 class="card-title">Title: {{data.title}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Date of cration: {{data.first_date}}</li>
+      <li class="list-group-item">Last Date of edition: {{data.last_edit}}</li>
+      <li class="list-group-item">Total edited {{data.edit_count}} times </li>
+      <li class="list-group-item">Catagory {{data.category}} </li>
+      <li class="list-group-item">Status {{data.status}} </li>
+      {% if data.status == 'COMPLETED' %}
+      <li class="list-group-item">Task finishing date : {{data.finished_date}}</li>
+
+      {% endif %}
+    </ul>
+    <div class="card-body">
+      <h3>Descriptions:</h3>
+      <p>
+        {{data.description}}
+      </p>
+    </div>
+  </div>
+
+
+
+
+
+{% endblock %}

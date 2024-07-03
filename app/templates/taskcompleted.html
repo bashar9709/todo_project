@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}completedpage{% endblock title %}
+
+{% block content %}
+
+{% if data %}
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">TITLE</th>
+          <th scope="col">STATUS</th>
+          <th scope="col">SEE DETAILS</th>
+          <th scope="col">ACTIONS</th>
+        </tr>
+      </thead>
+      {% for d in data %}
+      <tbody>
+        <tr>
+          <td>{{d.title}}</td>
+          <td>{{d.status}}</td>
+          <td>
+            <button class="btn btn-primary">
+              <a href="{% url 'details' d.id %}" style="color: antiquewhite; text-decoration: none">DETAILS
+              </a>
+            </button>
+          </td>
+          <td>
+            
+
+            <button class="btn btn-danger">
+              <a href="{% url 'delete' d.id %}" style="color: antiquewhite; text-decoration: none">DELETE</a>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+
+{% else %}
+    <h1 style="text-align: center; margin: 100px; font-size: 50px">
+   There is no history....
+   Please Complete a task!!
+    </h1>
+{% endif %} 
+
+
+
+{% endblock %}
